@@ -1,0 +1,15 @@
+name = "IALCTermination"
+version = "0.1.0"
+defaultTargets = ["ialctermination"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "master"
+
+[[lean_lib]]
+name = "IALCTermination"
+
+[[lean_exe]]
+name = "ialctermination"
+root = "Main"
