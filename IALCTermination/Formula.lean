@@ -27,5 +27,19 @@ def trueFormulasAt
     (B : Branch World Formula)
     (w : World)
     (closure : Finset Formula) : Finset Formula :=
-  closure.filter fun α =>
-    { sign := Sign.T, world := w, formula := α } ∈ B
+    closure.filter fun α => { sign := Sign.T, world := w, formula := α } ∈ B
+
+def falseFormulasAt
+    (B : Branch World Formula)
+    (w : World)
+    (closure : Finset Formula) : Finset Formula :=
+    closure.filter fun α => { sign := Sign.F, world := w, formula := α } ∈ B
+
+abbrev Expanded (World Formula : Type u) :=
+  Finset (SignedFormula World Formula)
+
+def expandedFormulasAt
+    (expanded : Expanded World Formula)
+    (w : World) : Finset (Sign × Formula) :=
+  (expanded.filter fun sf => sf.world = w).image
+    (fun sf => (sf.sign, sf.formula))
