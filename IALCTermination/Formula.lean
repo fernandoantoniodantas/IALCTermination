@@ -4,8 +4,6 @@ universe u
 
 variable {Formula : Type u} [DecidableEq Formula]
 variable {World : Type u} [DecidableEq World]
-
-
 variable (closure : Finset Formula)
 
 inductive Sign where
